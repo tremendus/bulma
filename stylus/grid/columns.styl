@@ -1,0 +1,110 @@
+$column-gap = 0.75rem
+.column
+  display: block
+  flex-basis: 0
+  flex-grow: 1
+  flex-shrink: 1
+  padding: $column-gap
+  .columns.is-mobile > &.is-narrow
+    flex: none
+  .columns.is-mobile > &.is-full
+    flex: none
+    width: 100%
+  .columns.is-mobile > &.is-three-quarters
+    flex: none
+    width: 75%
+  .columns.is-mobile > &.is-two-thirds
+    flex: none
+    width: 66.6666%
+  .columns.is-mobile > &.is-half
+    flex: none
+    width: 50%
+  .columns.is-mobile > &.is-one-third
+    flex: none
+    width: 33.3333%
+  .columns.is-mobile > &.is-one-quarter
+    flex: none
+    width: 25%
+  .columns.is-mobile > &.is-one-fifth
+    flex: none
+    width: 20%
+  .columns.is-mobile > &.is-two-fifths
+    flex: none
+    width: 40%
+  .columns.is-mobile > &.is-three-fifths
+    flex: none
+    width: 60%
+  .columns.is-mobile > &.is-four-fifths
+    flex: none
+    width: 80%
+  .columns.is-mobile > &.is-offset-three-quarters
+    margin-left: 75%
+  .columns.is-mobile > &.is-offset-two-thirds
+    margin-left: 66.6666%
+  .columns.is-mobile > &.is-offset-half
+    margin-left: 50%
+  .columns.is-mobile > &.is-offset-one-third
+    margin-left: 33.3333%
+  .columns.is-mobile > &.is-offset-one-quarter
+    margin-left: 25%
+  .columns.is-mobile > &.is-offset-one-fifth
+    margin-left: 20%
+  .columns.is-mobile > &.is-offset-two-fifths
+    margin-left: 40%
+  .columns.is-mobile > &.is-offset-three-fifths
+    margin-left: 60%
+  .columns.is-mobile > &.is-offset-four-fifths
+    margin-left: 80%
+  for $i in (1)..(12)
+    .columns.is-mobile > &.is-{$i}
+      flex: none
+      width: ($i / 12 * 100%)
+    .columns.is-mobile > &.is-offset-{$i}
+      margin-left: ($i / 12 * 100%)
+  mobile()
+  tablet()
+  touch()
+  desktop()
+  widescreen()
+  fullhd()
+.columns
+  margin-left: -1*$column-gap
+  margin-right: -1*$column-gap
+  margin-top: -1*$column-gap
+  &:last-child
+    margin-bottom: -1*$column-gap
+  &:not(:last-child)
+    margin-bottom: calc(1.5rem - {$column-gap})
+  // Modifiers
+  &.is-centered
+    justify-content: center
+  &.is-gapless
+    margin-left: 0
+    margin-right: 0
+    margin-top: 0
+    & > .column
+      margin: 0
+      padding: 0 !important
+    &:not(:last-child)
+      margin-bottom: 1.5rem
+    &:last-child
+      margin-bottom: 0
+  &.is-mobile
+    display: flex
+  &.is-multiline
+    flex-wrap: wrap
+  &.is-vcentered
+    align-items: center
+  // Responsiveness
+  tablet()
+  desktop()
+.columns.is-variable
+  --columnGap: 0.75rem
+  margin-left: calc(-1 * var(--columnGap))
+  margin-right: calc(-1 * var(--columnGap))
+  .column
+    padding-left: var(--columnGap)
+    padding-right: var(--columnGap)
+  for $i in (0)..(8)
+    &.is-{$i}
+      --columnGap: ($i * 0.25rem)

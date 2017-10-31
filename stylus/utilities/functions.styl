@@ -1,0 +1,31 @@
+//Below is a list of the Sass rules that could not be converted to Stylus
+// @each: line 13 in your Sass file
+
+
+powerNumber($number, $exp)
+  $value = 1
+  if $exp > 0
+    for $i in (1)..($exp)
+      $value = $value * $number
+  else if $exp < 0
+    for $i in (1)..(-$exp)
+      $value = $value / $number
+  $value
+colorLuminance($color)
+  $color-rgb = ("red": red($color), "green": green($color), "blue": blue($color))
+  //Cannot convert multi-variable each loops to Stylus
+  //@each $name, $value in $color-rgb
+  //  $adjusted: 0
+  //  $value: $value / 255
+  //  @if $value < 0.03928
+  //    $value: $value / 12.92
+  //  @else
+  //    $value: ($value + 0.055) / 1.055
+  //    $value: powerNumber($value, 2)
+  //  $color-rgb: map-merge($color-rgb, ($name: $value))
+  map-get($color-rgb, "red") * 0.2126 + map-get($color-rgb, "green") * 0.7152 + map-get($color-rgb, "blue") * 0.0722
+findColorInvert($color)
+  if colorLuminance($color) > 0.55
+    rgba(#000, 0.7)
+  else
+    #fff

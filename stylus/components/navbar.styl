@@ -1,0 +1,160 @@
+//Below is a list of the Sass rules that could not be converted to Stylus
+// @each: line 40 in your Sass file
+
+
+$navbar-background-color = $white
+$navbar-height = 3.25rem
+$navbar-item-color = $grey-dark
+$navbar-item-hover-color = $black
+$navbar-item-hover-background-color = $background
+$navbar-item-active-color = $black
+$navbar-item-active-background-color = transparent
+$navbar-item-img-max-height = 1.75rem
+$navbar-tab-hover-background-color = transparent
+$navbar-tab-hover-border-bottom-color = $link
+$navbar-tab-active-color = $link
+$navbar-tab-active-background-color = transparent
+$navbar-tab-active-border-bottom-color = $link
+$navbar-tab-active-border-bottom-style = solid
+$navbar-tab-active-border-bottom-width = 3px
+$navbar-dropdown-background-color = $white
+$navbar-dropdown-border-top = 1px solid $border
+$navbar-dropdown-offset = -4px
+$navbar-dropdown-arrow = $link
+$navbar-dropdown-radius = $radius-large
+$navbar-dropdown-z = 20
+$navbar-dropdown-boxed-radius = $radius-large
+$navbar-dropdown-boxed-shadow = 0 8px 8px rgba($black, 0.1), 0 0 0 1px rgba($black, 0.1)
+$navbar-dropdown-item-hover-color = $black
+$navbar-dropdown-item-hover-background-color = $background
+$navbar-dropdown-item-active-color = $link
+$navbar-dropdown-item-active-background-color = $background
+$navbar-divider-background-color = $border
+.navbar
+  background-color: $navbar-background-color
+  min-height: $navbar-height
+  position: relative
+  //Cannot convert multi-variable each loops to Stylus
+  //@each $name, $pair in $colors
+  //  $color: nth($pair, 1)
+  //  $color-invert: nth($pair, 2)
+  //  &.is-#{$name}
+  //    background-color: $color
+  //    color: $color-invert
+  //    .navbar-brand
+  //      & > .navbar-item,
+  //      .navbar-link
+  //        color: $color-invert
+  //      & > a.navbar-item,
+  //      .navbar-link
+  //        &:hover,
+  //        &.is-active
+  //          background-color: darken($color, 5%)
+  //          color: $color-invert
+  //      .navbar-link
+  //        &::after
+  //          border-color: $color-invert
+  //    +desktop
+  //      .navbar-start,
+  //      .navbar-end
+  //        & > .navbar-item,
+  //        .navbar-link
+  //          color: $color-invert
+  //        & > a.navbar-item,
+  //        .navbar-link
+  //          &:hover,
+  //          &.is-active
+  //            background-color: darken($color, 5%)
+  //            color: $color-invert
+  //        .navbar-link
+  //          &::after
+  //            border-color: $color-invert
+  //      .navbar-item.has-dropdown:hover .navbar-link,
+  //      .navbar-item.has-dropdown.is-active .navbar-link
+  //        background-color: darken($color, 5%)
+  //        color: $color-invert
+  //      .navbar-dropdown
+  //        a.navbar-item
+  //          &.is-active
+  //            background-color: $color
+  //            color: $color-invert
+  & > .container
+    align-items: stretch
+    display: flex
+    min-height: $navbar-height
+    width: 100%
+  &.has-shadow
+    box-shadow: 0 2px 3px rgba($black, 0.1)
+.navbar-brand,
+.navbar-tabs
+  align-items: stretch
+  display: flex
+  flex-shrink: 0
+  min-height: $navbar-height
+.navbar-tabs
+  overflow-touch()
+  max-width: 100vw
+  overflow-x: auto
+  overflow-y: hidden
+.navbar-burger
+  hamburger($navbar-height)
+  margin-left: auto
+.navbar-menu
+  display: none
+.navbar-item,
+.navbar-link
+  color: $navbar-item-color
+  display: block
+  line-height: 1.5
+  padding: 0.5rem 1rem
+  position: relative
+a.navbar-item,
+.navbar-link
+  &:hover,
+&.is-active
+    background-color: $navbar-item-hover-background-color
+    color: $navbar-item-hover-color
+.navbar-item
+  flex-grow: 0
+  flex-shrink: 0
+  img
+    max-height: $navbar-item-img-max-height
+  &.has-dropdown
+    padding: 0
+  &.is-expanded
+    flex-grow: 1
+    flex-shrink: 1
+  &.is-tab
+    border-bottom: 1px solid transparent
+    min-height: $navbar-height
+    padding-bottom: calc(0.5rem - 1px)
+    &:hover
+      background-color: $navbar-tab-hover-background-color
+      border-bottom-color: $navbar-tab-hover-border-bottom-color
+    &.is-active
+      background-color: $navbar-tab-active-background-color
+      border-bottom-color: $navbar-tab-active-border-bottom-color
+      border-bottom-style: $navbar-tab-active-border-bottom-style
+      border-bottom-width: $navbar-tab-active-border-bottom-width
+      color: $navbar-tab-active-color
+      padding-bottom: calc(0.5rem - {$navbar-tab-active-border-bottom-width})
+.navbar-content
+  flex-grow: 1
+  flex-shrink: 1
+.navbar-link
+  padding-right: 2.5em
+.navbar-dropdown
+  font-size: 0.875rem
+  padding-bottom: 0.5rem
+  padding-top: 0.5rem
+  .navbar-item
+    padding-left: 1.5rem
+    padding-right: 1.5rem
+.navbar-divider
+  background-color: $navbar-divider-background-color
+  border: none
+  display: none
+  height: 1px
+  margin: 0.5rem 0
+touch()
+desktop()
